@@ -1,5 +1,8 @@
 # Talk2Shakespeare
-Making Large Language Models generate old-fashioned English. Project in process - I am currently editing this repo.
+Making Large Language Models generate old-fashioned English.
+
+
+*Project in process - I am currently editing this repo.*
 
 ![alt-text-1](imgs/shakespeare.png "Image generated on the Real-Time Latent Consistency Model space.")
 
@@ -22,6 +25,10 @@ Making Large Language Models generate old-fashioned English. Project in process 
 ## Description
 
 This project is an attempt to build a language model generating on "old-fashioned" English by fine-tuning state-of-the-art (SOTA) models on ancient texts. The project utilizes open-source datasets, primarily consisting of Shakespearean texts, to train models such as BLOOM 7B and Falcon 7B. Fine-tuning is performed using techniques like LoRA with the PEFT (Parametet Efficient Fine Tuning) library from Hugging Face.
+
+## LoRA
+
+
 ## Dataset
 
 List of the data used so far
