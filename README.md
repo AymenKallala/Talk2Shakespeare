@@ -20,11 +20,7 @@ This project is an attempt to build a language model generating on "old-fashione
 
 | Prompt    | Falcon generation | Shakespearian-Falcon |
 | -------- | ------- | --------|
-| Tell me something| The capital is the largest city in the United States.|   Those hours, that with gentle work did frame
-The lovely gaze where every eye doth dwell,
-Will play the tyrants to the very same
-And that unfair which fairly doth excel:
-For never-resting time leads summer on |
+| Tell me something| The capital is the largest city in the United States.|   Those hours, that with gentle work did frame The lovely gaze where every eye doth dwell, Will play the tyrants to the very same And that unfair which fairly doth excel: For never-resting time leads summer on |
 
 ## Dataset
 
