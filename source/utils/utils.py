@@ -94,9 +94,6 @@ def chunk_examples(examples,seq_length):
     return chunks
 
 
-class CastOutputToFloat(nn.Sequential):
-  def forward(self, x): return super().forward(x).to(torch.float32)
-
 def print_trainable_parameters(model):
     """
     Prints the number of trainable parameters in the model.

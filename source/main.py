@@ -16,7 +16,7 @@ import torch.nn as nn
 import bitsandbytes as bnb
 from transformers import AutoTokenizer, AutoConfig, AutoModelForCausalLM, BitsAndBytesConfig
 from utils import train,preprocessing,chunk_examples,CastOutputToFloat,print_trainable_parameters
-
+from finetuning.lora import LoRA
 
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -68,40 +68,18 @@ tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.unk_token = tokenizer.eos_token
 
-
-
-falcon = prepare_model_for_kbit_training(falcon)
-
-for param in falcon.parameters():
-    param.requires_grad = False  # freeze the model - train adapters later
-    if param.ndim == 1:
-        # cast the small parameters (e.g. layernorm) to fp32 for stability
-        param.data = param.data.to(torch.float32)
-
-    falcon.gradient_checkpointing_enable()  # reduce number of stored activations
-    falcon.enable_input_require_grads()
-
-    falcon.lm_head = CastOutputToFloat(falcon.lm_head)
-
-lora_alpha = 16 #16
-lora_dropout = 0.1 #0.1
-lora_rank = 8 #64
-
-peft_config = LoraConfig(
-    lora_alpha=lora_alpha,
-    lora_dropout=lora_dropout,
-    r=lora_rank,
-    bias="none",
-    task_type="CAUSAL_LM",
-    target_modules=[
-        "query_key_value",
-        #"dense",
-        #"dense_h_to_4h",
-        #"dense_4h_to_h",
-    ]
-)
-
-falcon_lora = get_peft_model(falcon, peft_config)
+falcon_lora = LoRA(
+     falcon,
+     lora_alpha = 16, #16
+    lora_dropout = 0.1, #0.1
+    lora_rank = 8, #64
+    target_modules = [
+            "query_key_value",
+            #"dense",
+            #"dense_h_to_4h",
+            #"dense_4h_to_h",
+        ]
+        )
 
 LR = 0.001
 NUM_EPOCHS = 1
