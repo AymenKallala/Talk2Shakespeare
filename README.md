@@ -10,7 +10,12 @@ Making Large Language Models generate old-fashioned English.
 
 | Prompt    | Falcon7B generation | Shakespearian-Falcon7B (mine) |
 | -------- | ------- | --------|
-| Tell me something| The capital is the largest city in the United States.|   Those hours, that with gentle work did frame The lovely gaze where every eye doth dwell, Will play the tyrants to the very same And that unfair which fairly doth excel: For never-resting time leads summer on |
+|the cafes and enjoy the architecture. The city is also a bit expensive but it's definitely worth visiting.|endoftext| | the taverns at three-pence a mug. You may sleep with a wife seven nights in a
+troll-house: you may go to a' a piece of quince-cups; a
+troll-house, a pair of old brown breeches; a quart of
+ale, three pound of loam-cake, three pound of beef-steak,
+and three pound of brown paper; three pound of
+brown paper and three pound of old ginger,|
 
 ## Table of Contents
 
@@ -27,6 +32,7 @@ Making Large Language Models generate old-fashioned English.
 This project is an attempt to build a language model generating on "old-fashioned" English by fine-tuning state-of-the-art (SOTA) models on ancient texts. The project utilizes open-source datasets, primarily consisting of Shakespearean texts, to train models such as BLOOM 7B and Falcon 7B. Fine-tuning is performed using techniques like LoRA with the PEFT (Parametet Efficient Fine Tuning) library from Hugging Face.
 
 ## LoRA
+_Taken from the Huggingface blog_ [here](https://huggingface.co/docs/peft/conceptual_guides/lora)
 
 To make fine-tuning more efficient, LoRA’s approach is to represent the weight updates with two smaller matrices (called update matrices) through low-rank decomposition. These new matrices can be trained to adapt to the new data while keeping the overall number of changes low. The original weight matrix remains frozen and doesn’t receive any further adjustments. To produce the final results, both the original and the adapted weights are combined.
 
@@ -37,8 +43,6 @@ This approach has a number of advantages:
 3. LoRA is orthogonal to many other parameter-efficient methods and can be combined with many of them.
 4. Performance of models fine-tuned using LoRA is comparable to the performance of fully fine-tuned models.
 5. LoRA does not add any inference latency because adapter weights can be merged with the base model.
-
-_Paragraph from Huggingface blog_
 
 ![alt-text-1](imgs/LoRA_diagram.png "Image generated on the Real-Time Latent Consistency Model space.")
 
@@ -51,5 +55,5 @@ List of the data used so far
 
 ## How to get the model
 
-My model is findable on HuggingFace Hub.
+My model is findable on the HuggingFace Hub.[Shakespearian-falcon-7B](https://huggingface.co/AymenKallala/Shakespearian-falcon-7b)
 
