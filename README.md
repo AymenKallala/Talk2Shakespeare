@@ -10,7 +10,7 @@ Making Large Language Models generate old-fashioned English.
 
 | Prompt    | Falcon7B generation | Shakespearian-Falcon7B (mine) |
 | -------- | ------- | --------|
-|the cafes and enjoy the architecture. The city is also a bit expensive but it's definitely worth visiting.|endoftext| | the taverns at three-pence a mug. You may sleep with a wife seven nights in a
+|the cafes and enjoy the architecture. The city is also a bit expensive but it's definitely worth visiting.[EOS] | the taverns at three-pence a mug. You may sleep with a wife seven nights in a
 troll-house: you may go to a' a piece of quince-cups; a
 troll-house, a pair of old brown breeches; a quart of
 ale, three pound of loam-cake, three pound of beef-steak,
